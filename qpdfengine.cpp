@@ -113,7 +113,7 @@ void QPDFEnginePrivate::closePrintDevice()
 
     com::ubuntu::content::Transfer *transfer = hub->create_export_to_peer_for_type(peer, documentType);
 
-    if (transfer != nullptr) {
+    if (transfer != Q_NULLPTR) {
         transfer->start();
         transfer->charge(items);
     } else {

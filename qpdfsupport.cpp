@@ -1,4 +1,3 @@
-#include "qpdfsupport_p.h"
 /*
  * Copyright (C) 2016 Canonical Ltd
  *
@@ -21,6 +20,7 @@
 
 #include "qpdfdevice_p.h"
 #include "qpdfengine_p.h"
+#include "qpdfsupport_p.h"
 
 QT_BEGIN_NAMESPACE
 

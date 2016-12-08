@@ -1,7 +1,9 @@
 TARGET = pdfsupport
 TEMPLATE = lib
 
-QT += dbus printsupport printsupport-private
+QT += core-private dbus gui-private printsupport printsupport-private
+
+QMAKE_CXXFLAGS += -std=c++14
 
 target.path += $$[QT_INSTALL_PLUGINS]/printsupport
 
