@@ -1,5 +1,5 @@
 Source: qtubuntu-print
-Section: unknown
+Section: libs
 Priority: optional
 Maintainer: Andrew Hayzen <ahayzen@gmail.com>
 Build-Depends: debhelper (>=9),
