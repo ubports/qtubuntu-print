@@ -99,10 +99,7 @@ void QPDFEnginePrivate::closePrintDevice()
     com::ubuntu::content::Hub *hub = com::ubuntu::content::Hub::Client::instance();
     com::ubuntu::content::Type documentType = com::ubuntu::content::Type::Known::documents();
 
-//    QVector<com::ubuntu::content::Peer> peers = hub->known_destinations_for_type(documentType);
-//    com::ubuntu::content::Peer peer = peers.at(1);
-
-    com::ubuntu::content::Peer peer = com::ubuntu::content::Peer{"destination-app.ahayzen_destination-app_0.1"};  // pdfviewer.sverzegnassi_pdfviewer_2.2.261"};
+    com::ubuntu::content::Peer peer = com::ubuntu::content::Peer{"ubuntu-printing-app"};
 
     QVector<com::ubuntu::content::Item> items;
 
@@ -117,7 +114,7 @@ void QPDFEnginePrivate::closePrintDevice()
         transfer->start();
         transfer->charge(items);
     } else {
-        qWarning() << "Transfer failed to create, likely cannot find Peer: destination-app.ahayzen_destination-app_0.1";
+        qWarning() << "Transfer failed to create, likely cannot find Peer: ubuntu-printing-app";
     }
 
     // If we set the filename, reset it
