@@ -1,11 +1,13 @@
 /*
  * Copyright (C) 2016 Canonical Ltd
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 3 as
- * published by the Free Software Foundation.
+ * This file is part of qtubuntu-print.
  *
- * This program is distributed in the hope that it will be useful,
+ * qtubuntu-print is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * qtubuntu-print is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -22,22 +24,22 @@
 
 QT_BEGIN_NAMESPACE
 
-class QPDFEnginePrivate;
+class QUbuntuPrintEnginePrivate;
 
-class QPDFEngine : public QPdfPrintEngine
+class QUbuntuPrintEngine : public QPdfPrintEngine
 {
-    Q_DECLARE_PRIVATE(QPDFEngine)
+    Q_DECLARE_PRIVATE(QUbuntuPrintEngine)
 public:
-    QPDFEngine(QPrinter::PrinterMode m);
-    virtual ~QPDFEngine();
+    QUbuntuPrintEngine(QPrinter::PrinterMode m);
+    virtual ~QUbuntuPrintEngine();
 };
 
-class QPDFEnginePrivate : public QPdfPrintEnginePrivate
+class QUbuntuPrintEnginePrivate : public QPdfPrintEnginePrivate
 {
-    Q_DECLARE_PUBLIC(QPDFEngine)
+    Q_DECLARE_PUBLIC(QUbuntuPrintEngine)
 public:
-    QPDFEnginePrivate(QPrinter::PrinterMode m);
-    ~QPDFEnginePrivate();
+    QUbuntuPrintEnginePrivate(QPrinter::PrinterMode m);
+    ~QUbuntuPrintEnginePrivate();
 
     bool openPrintDevice() Q_DECL_OVERRIDE;
     void closePrintDevice() Q_DECL_OVERRIDE;

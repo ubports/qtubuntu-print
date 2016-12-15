@@ -1,11 +1,13 @@
 /*
  * Copyright (C) 2016 Canonical Ltd
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 3 as
- * published by the Free Software Foundation.
+ * This file is part of qtubuntu-print.
  *
- * This program is distributed in the hope that it will be useful,
+ * qtubuntu-print is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * qtubuntu-print is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -30,34 +32,34 @@
 #include <QtCore/QStandardPaths>
 #include <QtCore/QUrl>
 
-#include "qpdfdevice_p.h"
-#include "qpdfengine_p.h"
+#include "qubuntuprintdevice_p.h"
+#include "qubuntuprintengine_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QPDFEngine::QPDFEngine(QPrinter::PrinterMode m)
-    : QPdfPrintEngine(*new QPDFEnginePrivate(m))
+QUbuntuPrintEngine::QUbuntuPrintEngine(QPrinter::PrinterMode m)
+    : QPdfPrintEngine(*new QUbuntuPrintEnginePrivate(m))
 {
-    Q_D(QPDFEngine);
+    Q_D(QUbuntuPrintEngine);
 }
 
-QPDFEngine::~QPDFEngine()
+QUbuntuPrintEngine::~QUbuntuPrintEngine()
 {
 
 }
 
-QPDFEnginePrivate::QPDFEnginePrivate(QPrinter::PrinterMode m)
+QUbuntuPrintEnginePrivate::QUbuntuPrintEnginePrivate(QPrinter::PrinterMode m)
     : QPdfPrintEnginePrivate(m),
     m_output_filename_auto(false)
 {
 }
 
-QPDFEnginePrivate::~QPDFEnginePrivate()
+QUbuntuPrintEnginePrivate::~QUbuntuPrintEnginePrivate()
 {
 
 }
 
-bool QPDFEnginePrivate::openPrintDevice()
+bool QUbuntuPrintEnginePrivate::openPrintDevice()
 {
     if (outDevice)
         return false;
@@ -87,7 +89,7 @@ bool QPDFEnginePrivate::openPrintDevice()
     return true;
 }
 
-void QPDFEnginePrivate::closePrintDevice()
+void QUbuntuPrintEnginePrivate::closePrintDevice()
 {
     QPdfPrintEnginePrivate::closePrintDevice();
 

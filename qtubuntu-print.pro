@@ -1,4 +1,4 @@
-TARGET = pdfsupport
+TARGET = qtubuntu-print
 TEMPLATE = lib
 
 QT += core-private dbus gui-private printsupport printsupport-private
@@ -13,18 +13,18 @@ INSTALLS += target
 DEFINES += "QT_NO_CUPS"
 
 HEADERS += \
-    qpdfsupport_p.h \
-    qpdfengine_p.h \
-    qpdfdevice_p.h
+    qubuntuprintsupport_p.h \
+    qubuntuprintengine_p.h \
+    qubuntuprintdevice_p.h
 
 SOURCES += main.cpp \
-    qpdfsupport.cpp \
-    qpdfengine.cpp \
-    qpdfdevice.cpp
+    qubuntuprintsupport.cpp \
+    qubuntuprintengine.cpp \
+    qubuntuprintdevice.cpp
 
 DISTFILES += \
-    pdf.json
+    qtubuntu-print.json
 
-OTHER_FILES += pdf.json
+OTHER_FILES += qtubuntu-print.json
 
 unix|win32: LIBS += -lcontent-hub

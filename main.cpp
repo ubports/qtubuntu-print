@@ -1,11 +1,13 @@
 /*
  * Copyright (C) 2016 Canonical Ltd
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 3 as
- * published by the Free Software Foundation.
+ * This file is part of qtubuntu-print.
  *
- * This program is distributed in the hope that it will be useful,
+ * qtubuntu-print is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * qtubuntu-print is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -18,29 +20,29 @@
 #include <qpa/qplatformprintplugin.h>
 #include <QtCore/QStringList>
 
-#include "qpdfsupport_p.h"
+#include "qubuntuprintsupport_p.h"
 
 QT_BEGIN_NAMESPACE
 
-class QPDFSupportPlugin : public QPlatformPrinterSupportPlugin
+class QUbuntuPrintSupportPlugin : public QPlatformPrinterSupportPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID QPlatformPrinterSupportFactoryInterface_iid FILE "pdf.json")
+    Q_PLUGIN_METADATA(IID QPlatformPrinterSupportFactoryInterface_iid FILE "qtubuntu-print.json")
 
 public:
     QStringList keys() const;
     QPlatformPrinterSupport *create(const QString &) Q_DECL_OVERRIDE;
 };
 
-QStringList QPDFSupportPlugin::keys() const
+QStringList QUbuntuPrintSupportPlugin::keys() const
 {
-    return QStringList(QStringLiteral("pdfsupport"));
+    return QStringList(QStringLiteral("qtubuntu-print"));
 }
 
-QPlatformPrinterSupport *QPDFSupportPlugin::create(const QString &key)
+QPlatformPrinterSupport *QUbuntuPrintSupportPlugin::create(const QString &key)
 {
-    if (key.compare(key, QLatin1String("pdfsupport"), Qt::CaseInsensitive) == 0)
-        return new QPDFSupport;
+    if (key.compare(key, QLatin1String("qtubuntu-print"), Qt::CaseInsensitive) == 0)
+        return new QUbuntuPrintSupport;
     return 0;
 }
 
