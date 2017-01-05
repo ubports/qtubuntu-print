@@ -99,8 +99,6 @@ void QUbuntuPrintEnginePrivate::closePrintDevice()
 
     // Transfer via content-hub
     com::ubuntu::content::Hub *hub = com::ubuntu::content::Hub::Client::instance();
-    com::ubuntu::content::Type documentType = com::ubuntu::content::Type::Known::documents();
-
     com::ubuntu::content::Peer peer = com::ubuntu::content::Peer{"ubuntu-printing-app"};
 
     QVector<com::ubuntu::content::Item> items;
@@ -110,10 +108,9 @@ void QUbuntuPrintEnginePrivate::closePrintDevice()
     url.setScheme("file");
     items.append(com::ubuntu::content::Item(url.toString()));
 
-    com::ubuntu::content::Transfer *transfer = hub->create_export_to_peer_for_type(peer, documentType);
+    com::ubuntu::content::Transfer *transfer = hub->create_export_to_peer(peer);
 
     if (transfer != Q_NULLPTR) {
-        transfer->start();
         transfer->charge(items);
     } else {
         qWarning() << "Transfer failed to create, likely cannot find Peer: ubuntu-printing-app";
