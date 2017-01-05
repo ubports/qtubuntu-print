@@ -24,6 +24,8 @@
 
 QT_BEGIN_NAMESPACE
 
+#define PRINTING_APP_ID "ubuntu-printing-app"
+
 class QUbuntuPrintEnginePrivate;
 
 class QUbuntuPrintEngine : public QPdfPrintEngine
