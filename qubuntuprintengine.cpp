@@ -27,9 +27,8 @@
 #include <QDebug>
 #include <QtCore/QDateTime>
 #include <QtCore/QDir>
-#include <QtCore/QFile>
-#include <QtCore/QFileInfo>
 #include <QtCore/QStandardPaths>
+#include <QtCore/QTemporaryFile>
 #include <QtCore/QUrl>
 
 #include "qubuntuprintdevice_p.h"
@@ -65,60 +64,61 @@ bool QUbuntuPrintEnginePrivate::openPrintDevice()
         return false;
 
     if (outputFileName.isEmpty()) {
-        QDir dir(QStandardPaths::writableLocation(QStandardPaths::TempLocation));
+        QTemporaryFile *file = new QTemporaryFile();
 
-        if (!dir.exists()) {
-            dir.mkpath(".");
+        if (file->open()) {
+            outputFileName = file->fileName();
+            m_output_filename_auto = true;
+
+            outDevice = file;
+        } else {
+            qDebug() << "Failed to open file";
+            delete file;
+            return false;
         }
-
-        QFileInfo fileInfo(dir.path(), QDateTime::currentDateTime().toString(Qt::ISODate));
-        outputFileName = fileInfo.absoluteFilePath();
-        m_output_filename_auto = true;
     }
-
-    QFile *file = new QFile(outputFileName);
-
-    if (!file->open(QFile::WriteOnly|QFile::Truncate)) {
-        qDebug() << "Cannot write to the location.";
-        delete file;
-        return false;
-    }
-
-    outDevice = file;
 
     return true;
 }
 
 void QUbuntuPrintEnginePrivate::closePrintDevice()
 {
+    if (m_output_filename_auto) {
+        // ensure file is closed and flushed
+        if (outDevice) {
+            outDevice->close();
+        }
+
+        // Transfer via content-hub
+        com::ubuntu::content::Hub *hub = com::ubuntu::content::Hub::Client::instance();
+        com::ubuntu::content::Peer peer = com::ubuntu::content::Peer{PRINTING_APP_ID};
+
+        QVector<com::ubuntu::content::Item> items;
+
+        // Content-hub needs file:///path not closePrintDevice/path
+        QUrl url(outputFileName);
+        url.setScheme("file");
+        items.append(com::ubuntu::content::Item(url.toString()));
+
+        com::ubuntu::content::Transfer *transfer = hub->create_export_to_peer(peer);
+
+        if (transfer != Q_NULLPTR) {
+            transfer->charge(items);
+        } else {
+            qWarning() << "Transfer failed to create, likely cannot find Peer:" << PRINTING_APP_ID;
+        }
+
+        // If we set the filename, reset it
+        m_output_filename_auto = false;
+        outputFileName = "";
+    }
+
     QPdfPrintEnginePrivate::closePrintDevice();
 
     if (outDevice) {
         outDevice->close();
-    }
 
-    // Transfer via content-hub
-    com::ubuntu::content::Hub *hub = com::ubuntu::content::Hub::Client::instance();
-    com::ubuntu::content::Peer peer = com::ubuntu::content::Peer{PRINTING_APP_ID};
-
-    QVector<com::ubuntu::content::Item> items;
-
-    // Content-hub needs file:///path not /path
-    QUrl url(outputFileName);
-    url.setScheme("file");
-    items.append(com::ubuntu::content::Item(url.toString()));
-
-    com::ubuntu::content::Transfer *transfer = hub->create_export_to_peer(peer);
-
-    if (transfer != Q_NULLPTR) {
-        transfer->charge(items);
-    } else {
-        qWarning() << "Transfer failed to create, likely cannot find Peer:" << PRINTING_APP_ID;
-    }
-
-    // If we set the filename, reset it
-    if (m_output_filename_auto) {
-        m_output_filename_auto = false;
-        outputFileName = "";
+        delete outDevice;
+        outDevice = Q_NULLPTR;
     }
 }

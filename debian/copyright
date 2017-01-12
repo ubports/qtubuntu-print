@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: qt5-pdf-content-hub-print-plugin
-Source: <url://example.com>
+Upstream-Name: qtubuntu-print
+Source: https://code.launchpad.net/qtubuntu-print
 
 Files: *
 Copyright: 2016 Canonical Ltd.
