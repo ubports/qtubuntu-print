@@ -17,8 +17,8 @@
  *
  * Authored-by: Andrew Hayzen <andrew.hayzen@canonical.com>
  */
-#ifndef QPDFDEVICE_H
-#define QPDFDEVICE_H
+#ifndef QUBUNTUPRINTDEVICE_H
+#define QUBUNTUPRINTDEVICE_H
 
 #include <qpa/qplatformprintdevice.h>
 
@@ -35,4 +35,4 @@ public:
     bool isValid() const Q_DECL_OVERRIDE;
 };
 
-#endif // QPDFDEVICE_H
+#endif // QUBUNTUPRINTDEVICE_H

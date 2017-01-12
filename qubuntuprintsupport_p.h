@@ -17,8 +17,8 @@
  *
  * Authored-by: Andrew Hayzen <andrew.hayzen@canonical.com>
  */
-#ifndef QPDFSUPPORT_H
-#define QPDFSUPPORT_H
+#ifndef QUBUNTUPRINTSUPPORT_H
+#define QUBUNTUPRINTSUPPORT_H
 
 #include <qpa/qplatformprintersupport.h>
 #include <QtCore/qstringlist.h>
@@ -41,4 +41,4 @@ public:
 
 QT_END_NAMESPACE
 
-#endif // QPDFSUPPORT_H
+#endif // QUBUNTUPRINTSUPPORT_H

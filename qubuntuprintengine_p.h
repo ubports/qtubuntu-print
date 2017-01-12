@@ -17,8 +17,8 @@
  *
  * Authored-by: Andrew Hayzen <andrew.hayzen@canonical.com>
  */
-#ifndef QPDFENGINE_H
-#define QPDFENGINE_H
+#ifndef QUBUNTUPRINTENGINE_H
+#define QUBUNTUPRINTENGINE_H
 
 #include <QtPrintSupport/private/qprintengine_pdf_p.h>
 
@@ -51,4 +51,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QPDFENGINE_H
+#endif // QUBUNTUPRINTENGINE_H
