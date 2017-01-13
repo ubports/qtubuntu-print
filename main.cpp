@@ -17,12 +17,14 @@
  *
  * Authored-by: Andrew Hayzen <andrew.hayzen@canonical.com>
  */
-#include <qpa/qplatformprintplugin.h>
+#include <QtPrintSupport/qpa/qplatformprintplugin.h>
 #include <QtCore/QStringList>
 
 #include "qubuntuprintsupport_p.h"
 
 QT_BEGIN_NAMESPACE
+
+#define I18N_DOMAIN "qtubuntu-print"
 
 class QUbuntuPrintSupportPlugin : public QPlatformPrinterSupportPlugin
 {

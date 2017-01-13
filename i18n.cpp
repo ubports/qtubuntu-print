@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Canonical Ltd
+ * Copyright © 2014, 2017 Canonical Ltd.
  *
  * This file is part of qtubuntu-print.
  *
@@ -15,24 +15,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * Authored-by: Andrew Hayzen <andrew.hayzen@canonical.com>
+ * Authored by: Ken VanDine <ken.vandine@canonical.com>
+ *              Andrew Hayzen <andrew.hayzen@canonical.com>
  */
-#ifndef QUBUNTUPRINTDEVICE_H
-#define QUBUNTUPRINTDEVICE_H
 
-#include <QtPrintSupport/qpa/qplatformprintdevice.h>
+#define NO_TR_OVERRIDE
+#include "i18n.h"
+
+#include <libintl.h>
 
 QT_BEGIN_NAMESPACE
 
-#define PRINTER_NAME "Printing Service"
-
-class QUbuntuPrintDevice : public QPlatformPrintDevice
+void initTr(const char *domain, const char *localeDir)
 {
-public:
-    QUbuntuPrintDevice();
-    explicit QUbuntuPrintDevice(const QString &id);
+    bindtextdomain(domain, localeDir);
+    textdomain(domain);
+}
 
-    bool isValid() const Q_DECL_OVERRIDE;
-};
+QString __(const char *text, const char *domain)
+{
+    return QString::fromUtf8(dgettext(domain, text));
+}
 
-#endif // QUBUNTUPRINTDEVICE_H
+QT_END_NAMESPACE

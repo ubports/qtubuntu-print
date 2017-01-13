@@ -17,6 +17,8 @@
  *
  * Authored-by: Andrew Hayzen <andrew.hayzen@canonical.com>
  */
+
+#include "i18n.h"
 #include "qubuntuprintdevice_p.h"
 
 QUbuntuPrintDevice::QUbuntuPrintDevice()
@@ -32,9 +34,14 @@ QUbuntuPrintDevice::QUbuntuPrintDevice(const QString &id)
     // and QPrinter ends up thinking it is not a NativePrinter
     // which then allows the user to change the output filename
     m_id = id;
-    m_name = QStringLiteral(PRINTER_NAME);
-    m_location = QStringLiteral("Internal");
-    m_makeAndModel = QStringLiteral("PDF Printing Service");
+    m_name = __("Printing Service");
+    m_location = __("Internal");
+    m_makeAndModel = __("PDF Printing Service");
+
+    // Disable collate, copies and duplex as they don't make sense
+    m_supportsCollateCopies = false;
+    m_supportsMultipleCopies = false;
+    m_haveDuplexModes = false;
 }
 
 bool QUbuntuPrintDevice::isValid() const

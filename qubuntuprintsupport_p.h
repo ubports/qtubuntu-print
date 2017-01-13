@@ -20,7 +20,7 @@
 #ifndef QUBUNTUPRINTSUPPORT_H
 #define QUBUNTUPRINTSUPPORT_H
 
-#include <qpa/qplatformprintersupport.h>
+#include <QtPrintSupport/qpa/qplatformprintersupport.h>
 #include <QtCore/qstringlist.h>
 
 QT_BEGIN_NAMESPACE

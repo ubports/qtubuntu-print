@@ -20,15 +20,18 @@
 #include <QtPrintSupport/qprintengine.h>
 #include <QtPrintSupport/private/qprintdevice_p.h>
 
+#include "i18n.h"
 #include "qubuntuprintdevice_p.h"
 #include "qubuntuprintengine_p.h"
 #include "qubuntuprintsupport_p.h"
 
 QT_BEGIN_NAMESPACE
 
+#define I18N_DOMAIN "qtubuntu-print"
+
 QUbuntuPrintSupport::QUbuntuPrintSupport()
 {
-
+    initTr(I18N_DOMAIN, NULL);
 }
 
 QUbuntuPrintSupport::~QUbuntuPrintSupport()
@@ -54,12 +57,12 @@ QPrintDevice QUbuntuPrintSupport::createPrintDevice(const QString &id)
 
 QStringList QUbuntuPrintSupport::availablePrintDeviceIds() const
 {
-    return QStringList(QStringLiteral(PRINTER_NAME));
+    return QStringList(__(PRINTER_NAME));
 }
 
 QString QUbuntuPrintSupport::defaultPrintDeviceId() const
 {
-    return QStringLiteral(PRINTER_NAME);
+    return __(PRINTER_NAME);
 }
 
 QT_END_NAMESPACE
