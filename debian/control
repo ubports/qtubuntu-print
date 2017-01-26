@@ -20,8 +20,8 @@ Package: qtubuntu-print
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
     content-hub,
-    libqt5printsupport5,
-    ubuntu-printing-app
+    libqt5printsupport5
+Recommends: ubuntu-printing-app
 Description: Print plugin for Qt sending PDFs over content-hub
  A printing plugin for Qt which creates a PDF and sends it
  over content-hub to a destination app.
