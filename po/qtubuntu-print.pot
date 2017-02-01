@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: qtubuntu-print\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 16:47+0000\n"
+"POT-Creation-Date: 2017-02-01 17:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,7 +30,7 @@ msgid "PDF Printing Service"
 msgstr ""
 
 #: qubuntuprintengine.cpp:113
-msgid "Failed to create transfer"
+msgid "Printing failed"
 msgstr ""
 
 #: qubuntuprintengine.cpp:114
