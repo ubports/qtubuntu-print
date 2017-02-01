@@ -20,6 +20,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra")
 find_package(Qt5Core)
 find_package(Qt5DBus)
 find_package(Qt5PrintSupport)
+find_package(Qt5Widgets)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(CONTENTHUB REQUIRED libcontent-hub)
 
@@ -60,7 +61,7 @@ set(
 
 add_library(${LIBNAME} SHARED ${qtubuntu_print_SRC})
 
-qt5_use_modules(${LIBNAME} Core DBus PrintSupport)
+qt5_use_modules(${LIBNAME} Core DBus PrintSupport Widgets)
 target_link_libraries(${LIBNAME} content-hub)
 
 

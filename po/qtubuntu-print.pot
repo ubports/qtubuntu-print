@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: qtubuntu-print\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-13 13:10+0000\n"
+"POT-Creation-Date: 2017-02-01 16:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,4 +27,12 @@ msgstr ""
 
 #: qubuntuprintdevice.cpp:39
 msgid "PDF Printing Service"
+msgstr ""
+
+#: qubuntuprintengine.cpp:113
+msgid "Failed to create transfer"
+msgstr ""
+
+#: qubuntuprintengine.cpp:114
+msgid "Unable to find ubuntu-printing-app, please ensure that it is installed"
 msgstr ""

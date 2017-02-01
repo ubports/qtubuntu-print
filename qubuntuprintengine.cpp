@@ -30,6 +30,9 @@
 #include <QtCore/QStandardPaths>
 #include <QtCore/QTemporaryFile>
 #include <QtCore/QUrl>
+#include <QtWidgets/QMessageBox>
+
+#include "i18n.h"
 
 #include "qubuntuprintdevice_p.h"
 #include "qubuntuprintengine_p.h"
@@ -106,6 +109,9 @@ void QUbuntuPrintEnginePrivate::closePrintDevice()
             transfer->charge(items);
         } else {
             qWarning() << "Transfer failed to create, likely cannot find Peer:" << PRINTING_APP_ID;
+            QMessageBox::warning(Q_NULLPTR,
+                                 __("Failed to create transfer"),
+                                 __("Unable to find ubuntu-printing-app, please ensure that it is installed"));
         }
 
         // If we set the filename, reset it
