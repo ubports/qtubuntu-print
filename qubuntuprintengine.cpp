@@ -105,7 +105,7 @@ void QUbuntuPrintEnginePrivate::closePrintDevice()
 
         com::ubuntu::content::Transfer *transfer = hub->create_export_to_peer(peer);
 
-        if (transfer != Q_NULLPTR) {
+        if (transfer != Q_NULLPTR && transfer->state() != com::ubuntu::content::Transfer::aborted) {
             transfer->charge(items);
         } else {
             qWarning() << "Transfer failed to create, likely cannot find Peer:" << PRINTING_APP_ID;
