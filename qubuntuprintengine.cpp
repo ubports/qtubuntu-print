@@ -112,7 +112,8 @@ void QUbuntuPrintEnginePrivate::closePrintDevice()
             qWarning() << "Transfer failed to create, likely cannot find Peer:" << APP_ID;
             QMessageBox::warning(Q_NULLPTR,
                                  __("Printing failed"),
-                                 __("Unable to find ubuntu-printing-app, please ensure that it is installed"));
+                                 // TRANSLATORS: %0 is the name of the application (ubuntu-printing-app)
+                                 __("Unable to find %0, please ensure that it is installed").arg(APP_ID));
         }
 
         // If we set the filename, reset it
