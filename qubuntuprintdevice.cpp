@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Canonical Ltd
+ * Copyright (C) 2016-2017 Canonical Ltd
  *
  * This file is part of qtubuntu-print.
  *
@@ -18,6 +18,7 @@
  * Authored-by: Andrew Hayzen <andrew.hayzen@canonical.com>
  */
 
+#include "constants.h"
 #include "i18n.h"
 #include "qubuntuprintdevice_p.h"
 
@@ -34,9 +35,9 @@ QUbuntuPrintDevice::QUbuntuPrintDevice(const QString &id)
     // and QPrinter ends up thinking it is not a NativePrinter
     // which then allows the user to change the output filename
     m_id = id;
-    m_name = __("Printing Service");
+    m_name = PRINTER_NAME;
     m_location = __("Internal");
-    m_makeAndModel = __("PDF Printing Service");
+    m_makeAndModel = PRINTER_NAME;
 
     // Disable collate, copies and duplex as they don't make sense
     m_supportsCollateCopies = false;

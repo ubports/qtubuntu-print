@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Canonical Ltd
+ * Copyright (C) 2016-2017 Canonical Ltd
  *
  * This file is part of qtubuntu-print.
  *
@@ -24,7 +24,7 @@
 #include <com/ubuntu/content/transfer.h>
 #include <com/ubuntu/content/type.h>
 
-#include <QDebug>
+#include <QtCore/QDebug>
 #include <QtCore/QDateTime>
 #include <QtCore/QDir>
 #include <QtCore/QStandardPaths>
@@ -32,6 +32,7 @@
 #include <QtCore/QUrl>
 #include <QtWidgets/QMessageBox>
 
+#include "constants.h"
 #include "i18n.h"
 
 #include "qubuntuprintdevice_p.h"
@@ -94,7 +95,7 @@ void QUbuntuPrintEnginePrivate::closePrintDevice()
 
         // Transfer via content-hub
         com::ubuntu::content::Hub *hub = com::ubuntu::content::Hub::Client::instance();
-        com::ubuntu::content::Peer peer = com::ubuntu::content::Peer{PRINTING_APP_ID};
+        com::ubuntu::content::Peer peer = com::ubuntu::content::Peer{APP_ID};
 
         QVector<com::ubuntu::content::Item> items;
 
@@ -108,7 +109,7 @@ void QUbuntuPrintEnginePrivate::closePrintDevice()
         if (transfer != Q_NULLPTR && transfer->state() != com::ubuntu::content::Transfer::aborted) {
             transfer->charge(items);
         } else {
-            qWarning() << "Transfer failed to create, likely cannot find Peer:" << PRINTING_APP_ID;
+            qWarning() << "Transfer failed to create, likely cannot find Peer:" << APP_ID;
             QMessageBox::warning(Q_NULLPTR,
                                  __("Printing failed"),
                                  __("Unable to find ubuntu-printing-app, please ensure that it is installed"));

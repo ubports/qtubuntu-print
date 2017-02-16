@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Canonical Ltd
+ * Copyright (C) 2016-2017 Canonical Ltd
  *
  * This file is part of qtubuntu-print.
  *
@@ -23,8 +23,6 @@
 #include <QtPrintSupport/private/qprintengine_pdf_p.h>
 
 QT_BEGIN_NAMESPACE
-
-#define PRINTING_APP_ID "ubuntu-printing-app"
 
 class QUbuntuPrintEnginePrivate;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Canonical Ltd
+ * Copyright (C) 2016-2017 Canonical Ltd
  *
  * This file is part of qtubuntu-print.
  *
@@ -20,14 +20,13 @@
 #include <QtPrintSupport/qprintengine.h>
 #include <QtPrintSupport/private/qprintdevice_p.h>
 
+#include "constants.h"
 #include "i18n.h"
 #include "qubuntuprintdevice_p.h"
 #include "qubuntuprintengine_p.h"
 #include "qubuntuprintsupport_p.h"
 
 QT_BEGIN_NAMESPACE
-
-#define I18N_DOMAIN "qtubuntu-print"
 
 QUbuntuPrintSupport::QUbuntuPrintSupport()
 {
@@ -57,12 +56,12 @@ QPrintDevice QUbuntuPrintSupport::createPrintDevice(const QString &id)
 
 QStringList QUbuntuPrintSupport::availablePrintDeviceIds() const
 {
-    return QStringList(__(PRINTER_NAME));
+    return QStringList(PRINTER_NAME);
 }
 
 QString QUbuntuPrintSupport::defaultPrintDeviceId() const
 {
-    return __(PRINTER_NAME);
+    return PRINTER_NAME;
 }
 
 QT_END_NAMESPACE

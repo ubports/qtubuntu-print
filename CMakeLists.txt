@@ -52,6 +52,7 @@ set(LIBNAME qtubuntu-print)
 
 set(
   qtubuntu_print_SRC
+  constants.h
   i18n.cpp
   main.cpp
   qubuntuprintdevice.cpp

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Canonical Ltd
+ * Copyright (C) 2016-2017 Canonical Ltd
  *
  * This file is part of qtubuntu-print.
  *
@@ -20,11 +20,10 @@
 #include <QtPrintSupport/qpa/qplatformprintplugin.h>
 #include <QtCore/QStringList>
 
+#include "constants.h"
 #include "qubuntuprintsupport_p.h"
 
 QT_BEGIN_NAMESPACE
-
-#define I18N_DOMAIN "qtubuntu-print"
 
 class QUbuntuPrintSupportPlugin : public QPlatformPrinterSupportPlugin
 {
@@ -38,12 +37,12 @@ public:
 
 QStringList QUbuntuPrintSupportPlugin::keys() const
 {
-    return QStringList(QStringLiteral("qtubuntu-print"));
+    return QStringList(QStringLiteral(JSON_KEY));
 }
 
 QPlatformPrinterSupport *QUbuntuPrintSupportPlugin::create(const QString &key)
 {
-    if (key.compare(key, QLatin1String("qtubuntu-print"), Qt::CaseInsensitive) == 0)
+    if (key.compare(key, QLatin1String(JSON_KEY), Qt::CaseInsensitive) == 0)
         return new QUbuntuPrintSupport;
     return 0;
 }

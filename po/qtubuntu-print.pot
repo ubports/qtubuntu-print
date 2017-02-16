@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: qtubuntu-print\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 17:08+0000\n"
+"POT-Creation-Date: 2017-02-16 15:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: qubuntuprintdevice.cpp:37
-msgid "Printing Service"
-msgstr ""
-
-#: qubuntuprintdevice.cpp:38
-msgid "Internal"
+#: constants.h:29 constants.h:27
+msgid "Ubuntu Printing Service"
 msgstr ""
 
 #: qubuntuprintdevice.cpp:39
-msgid "PDF Printing Service"
-msgstr ""
-
-#: qubuntuprintengine.cpp:113
-msgid "Printing failed"
+msgid "Internal"
 msgstr ""
 
 #: qubuntuprintengine.cpp:114
+msgid "Printing failed"
+msgstr ""
+
+#: qubuntuprintengine.cpp:115
 msgid "Unable to find ubuntu-printing-app, please ensure that it is installed"
 msgstr ""

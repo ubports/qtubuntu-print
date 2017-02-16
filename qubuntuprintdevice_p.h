@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Canonical Ltd
+ * Copyright (C) 2016-2017 Canonical Ltd
  *
  * This file is part of qtubuntu-print.
  *
@@ -20,11 +20,10 @@
 #ifndef QUBUNTUPRINTDEVICE_H
 #define QUBUNTUPRINTDEVICE_H
 
+#include <QtCore/QString>
 #include <QtPrintSupport/qpa/qplatformprintdevice.h>
 
 QT_BEGIN_NAMESPACE
-
-#define PRINTER_NAME "Printing Service"
 
 class QUbuntuPrintDevice : public QPlatformPrintDevice
 {
@@ -34,5 +33,7 @@ public:
 
     bool isValid() const Q_DECL_OVERRIDE;
 };
+
+QT_END_NAMESPACE
 
 #endif // QUBUNTUPRINTDEVICE_H
