@@ -3,25 +3,26 @@ Section: libs
 Priority: optional
 Maintainer: Andrew Hayzen <andrew.hayzen@canonical.com>
 Build-Depends: cmake (>= 2.8.9),
-    debhelper (>=9),
-    dh-translations,
-    libcontent-hub-dev,
-    libqt5printsupport5,
-    libqt5widgets5,
-    pkg-config,
-    qt5-qmake,
-    qtbase5-dev,
-    qtbase5-private-dev,
+               debhelper (>=9),
+               dh-translations,
+               libcontent-hub-dev,
+               libqt5printsupport5,
+               libqt5widgets5,
+               pkg-config,
+               qt5-qmake,
+               qtbase5-dev,
+               qtbase5-private-dev
 Standards-Version: 3.9.7
 Homepage: http://launchpad.net/qtubuntu-print
 Vcs-Bzr: https://code.launchpad.net/~phablet-team/qtubuntu-print/trunk
 
 Package: qtubuntu-print
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends},
-    content-hub,
-    libqt5printsupport5,
-    libqt5widgets5
+Depends: content-hub,
+         libqt5printsupport5,
+         libqt5widgets5,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Recommends: ubuntu-printing-app
 Description: Print plugin for Qt sending PDFs over content-hub
  A printing plugin for Qt which creates a PDF and sends it
