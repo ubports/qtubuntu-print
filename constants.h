@@ -19,6 +19,9 @@
  */
 #include "i18n.h"
 
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
+
 QT_BEGIN_NAMESPACE
 
 #define APP_ID "ubuntu-printing-app"
@@ -27,3 +30,5 @@ QT_BEGIN_NAMESPACE
 #define PRINTER_NAME __("Ubuntu Printing Service")
 
 QT_END_NAMESPACE
+
+#endif // CONSTANTS_H
