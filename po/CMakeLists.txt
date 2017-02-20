@@ -7,6 +7,10 @@ set(DOMAIN ${GETTEXT_PACKAGE})
 set(POT_FILE ${DOMAIN}.pot)
 file(GLOB PO_FILES *.po)
 
+file(GLOB I18N_SRC_FILES
+    RELATIVE ${CMAKE_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/src/*.h ${CMAKE_SOURCE_DIR}/src/*.cpp)
+
 add_custom_target(${POT_FILE} ALL
                   COMMAND touch ${POT_FILE}
                   COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${POT_FILE}
@@ -17,7 +21,7 @@ add_custom_target(${POT_FILE} ALL
                           -j
                           --package-name=qtubuntu-print
                           --copyright-holder='Canonical Ltd.'
-                          ${qtubuntu_print_SRC}
+                          ${I18N_SRC_FILES}
                   COMMAND ${CMAKE_COMMAND} -E copy ${POT_FILE} ${CMAKE_CURRENT_SOURCE_DIR})
 
 foreach(PO_FILE ${PO_FILES})
@@ -28,3 +32,6 @@ foreach(PO_FILE ${PO_FILES})
             DESTINATION ${INSTALL_DIR}
             RENAME ${DOMAIN}.mo)
 endforeach(PO_FILE)
+
+# Show .pot in QtC
+add_custom_target(qtubuntu_print_qtc_pot_files SOURCES ${POT_FILE})
