@@ -50,7 +50,7 @@ target_link_libraries(${LIBNAME} content-hub)
 
 # Install the plugin file
 execute_process(
-    COMMAND ${QT_QMAKE_EXECUTABLE} -query QT_INSTALL_PLUGINS
+    COMMAND qmake -query QT_INSTALL_PLUGINS
             OUTPUT_VARIABLE QT_INSTALL_PLUGINS_DIR
             OUTPUT_STRIP_TRAILING_WHITESPACE
     )
