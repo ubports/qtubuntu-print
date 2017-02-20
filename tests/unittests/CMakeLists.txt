@@ -3,7 +3,7 @@ include_directories(
     ${CMAKE_CURRENT_BINARY_DIR}
 )
 
-find_package(Qt5PrintSupport)
+find_package(Qt5PrintSupport REQUIRED)
 find_package(Qt5Test REQUIRED)
 
 # Add the fakeprint plugin

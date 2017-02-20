@@ -1,6 +1,6 @@
 # Find packages
-find_package(Qt5Core)
-find_package(Qt5PrintSupport)
+find_package(Qt5Core REQUIRED)
+find_package(Qt5PrintSupport REQUIRED)
 find_package(PkgConfig REQUIRED)
 
 # Replicate qmake CONFIG += plugin

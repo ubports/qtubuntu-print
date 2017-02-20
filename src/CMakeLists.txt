@@ -1,8 +1,8 @@
 # Find packages
-find_package(Qt5Core)
-find_package(Qt5DBus)
-find_package(Qt5PrintSupport)
-find_package(Qt5Widgets)
+find_package(Qt5Core REQUIRED)
+find_package(Qt5DBus REQUIRED)
+find_package(Qt5PrintSupport REQUIRED)
+find_package(Qt5Widgets REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(CONTENTHUB REQUIRED libcontent-hub)
 
