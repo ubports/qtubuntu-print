@@ -63,3 +63,9 @@ file(GLOB QTC_FILES
      *.cpp *.h *.json)
 
 add_custom_target(qtubuntu_print_qtc_files DEPENDS main.cpp SOURCES ${QTC_FILES})
+
+
+# Set variables for outside use
+set(SRC_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR} PARENT_SCOPE)
+set(SRC_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR} PARENT_SCOPE)
+set(SRC_LIBNAME "lib${LIBNAME}" PARENT_SCOPE)

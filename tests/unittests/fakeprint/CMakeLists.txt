@@ -26,14 +26,14 @@ include_directories(
 )
 
 # Setup the library sources and name
-set(fakeprint_LIBNAME fakeprint)
+set(LIBNAME fakeprint)
 set(
   fakeprint_SRC
   main.cpp
 )
 
-add_library(${fakeprint_LIBNAME} SHARED ${fakeprint_SRC})
-qt5_use_modules(${fakeprint_LIBNAME} Core PrintSupport)
+add_library(${LIBNAME} SHARED ${fakeprint_SRC})
+qt5_use_modules(${LIBNAME} Core PrintSupport)
 
 # Show files in QtC
 file(GLOB QTC_FILES
@@ -41,3 +41,9 @@ file(GLOB QTC_FILES
      *.cpp *.h *.json)
 
 add_custom_target(fake_print_qtc_files DEPENDS main.cpp SOURCES ${QTC_FILES})
+
+
+# Set variables for outside use
+set(FAKEPRINT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR} PARENT_SCOPE)
+set(FAKEPRINT_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR} PARENT_SCOPE)
+set(FAKEPRINT_LIBNAME "lib${LIBNAME}" PARENT_SCOPE)

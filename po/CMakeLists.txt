@@ -9,7 +9,7 @@ file(GLOB PO_FILES *.po)
 
 file(GLOB I18N_SRC_FILES
     RELATIVE ${CMAKE_SOURCE_DIR}
-    ${CMAKE_SOURCE_DIR}/src/*.h ${CMAKE_SOURCE_DIR}/src/*.cpp)
+    ${SRC_SOURCE_DIR}/*.h ${SRC_SOURCE_DIR}/*.cpp)
 
 add_custom_target(${POT_FILE} ALL
                   COMMAND touch ${POT_FILE}
