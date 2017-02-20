@@ -1,14 +1,16 @@
 qtubuntu-print is a plugin to the printing system of Qt.
-It generates a PDF document and sends over content-hub
+It generates a PDF document and sends it over content-hub
 to a destination application.
 
 # Building
 
 The build system uses cmake.
-To compile, simple invoke cmake and then make:
+To compile, simply invoke cmake and then make:
 
 ```
-cmake .
+mkdir build
+cd build
+cmake ../
 make
 ```
 
