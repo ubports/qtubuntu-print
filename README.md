@@ -24,7 +24,7 @@ bzr builddeb
 
 # Installing
 
-To install the plugin on the system, invoke use make install:
+To install the plugin on the system, invoke make install:
 
 ```
 sudo make install
