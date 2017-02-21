@@ -30,8 +30,8 @@
 
 // This test ensures that we are able to load a plugin qtubuntu-print and it
 // acts as expected
-// Qt uses the first found plugin which will be the libfakeprint.so which has
-// been copied into qtubuntu-print/printsupport/libqtubuntu-print.so
+// Qt uses the first found plugin which will be the libqtubuntu-print.so which
+// has been copied into qtubuntu-print/printsupport/libqtubuntu-print.so
 // (relative to this)
 class TestPrinterInfo : public QObject
 {
