@@ -1,5 +1,8 @@
-qtubuntu-print (0.1-1) UNRELEASED; urgency=medium
+qtubuntu-print (0.1+17.04.20170301.2-0ubuntu1) zesty; urgency=medium
 
   * Initial release
+  * Initial commit
+  * Move src files into their own directory
+  * Add a readme
 
- -- Andrew Hayzen <andrew.hayzen@canonical.com>  Thu, 08 Dec 2016 17:54:28 +0000
+ -- Andrew Hayzen <ahayzen@gmail.com>  Wed, 01 Mar 2017 22:24:46 +0000
