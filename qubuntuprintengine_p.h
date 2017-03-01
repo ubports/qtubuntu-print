@@ -17,36 +17,36 @@
  *
  * Authored-by: Andrew Hayzen <andrew.hayzen@canonical.com>
  */
-#include <QtPrintSupport/qpa/qplatformprintplugin.h>
-#include <QtCore/QStringList>
+#ifndef QUBUNTUPRINTENGINE_H
+#define QUBUNTUPRINTENGINE_H
 
-#include "constants.h"
-#include "qubuntuprintsupport_p.h"
+#include <QtPrintSupport/private/qprintengine_pdf_p.h>
 
 QT_BEGIN_NAMESPACE
 
-class QUbuntuPrintSupportPlugin : public QPlatformPrinterSupportPlugin
-{
-    Q_OBJECT
-    Q_PLUGIN_METADATA(IID QPlatformPrinterSupportFactoryInterface_iid FILE "qtubuntu-print.json")
+class QUbuntuPrintEnginePrivate;
 
+class QUbuntuPrintEngine : public QPdfPrintEngine
+{
+    Q_DECLARE_PRIVATE(QUbuntuPrintEngine)
 public:
-    QStringList keys() const;
-    QPlatformPrinterSupport *create(const QString &) Q_DECL_OVERRIDE;
+    QUbuntuPrintEngine(QPrinter::PrinterMode m);
+    virtual ~QUbuntuPrintEngine();
 };
 
-QStringList QUbuntuPrintSupportPlugin::keys() const
+class QUbuntuPrintEnginePrivate : public QPdfPrintEnginePrivate
 {
-    return QStringList(QStringLiteral(JSON_KEY));
-}
+    Q_DECLARE_PUBLIC(QUbuntuPrintEngine)
+public:
+    QUbuntuPrintEnginePrivate(QPrinter::PrinterMode m);
+    ~QUbuntuPrintEnginePrivate();
 
-QPlatformPrinterSupport *QUbuntuPrintSupportPlugin::create(const QString &key)
-{
-    if (key.compare(key, QLatin1String(JSON_KEY), Qt::CaseInsensitive) == 0)
-        return new QUbuntuPrintSupport;
-    return 0;
-}
+    bool openPrintDevice() Q_DECL_OVERRIDE;
+    void closePrintDevice() Q_DECL_OVERRIDE;
+private:
+    bool m_output_filename_auto;
+};
 
 QT_END_NAMESPACE
 
-#include "main.moc"
+#endif // QUBUNTUPRINTENGINE_H

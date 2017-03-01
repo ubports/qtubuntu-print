@@ -17,36 +17,35 @@
  *
  * Authored-by: Andrew Hayzen <andrew.hayzen@canonical.com>
  */
-#include <QtPrintSupport/qpa/qplatformprintplugin.h>
-#include <QtCore/QStringList>
 
 #include "constants.h"
-#include "qubuntuprintsupport_p.h"
+#include "i18n.h"
+#include "qubuntuprintdevice_p.h"
 
-QT_BEGIN_NAMESPACE
-
-class QUbuntuPrintSupportPlugin : public QPlatformPrinterSupportPlugin
+QUbuntuPrintDevice::QUbuntuPrintDevice()
 {
-    Q_OBJECT
-    Q_PLUGIN_METADATA(IID QPlatformPrinterSupportFactoryInterface_iid FILE "qtubuntu-print.json")
 
-public:
-    QStringList keys() const;
-    QPlatformPrinterSupport *create(const QString &) Q_DECL_OVERRIDE;
-};
-
-QStringList QUbuntuPrintSupportPlugin::keys() const
-{
-    return QStringList(QStringLiteral(JSON_KEY));
 }
 
-QPlatformPrinterSupport *QUbuntuPrintSupportPlugin::create(const QString &key)
+QUbuntuPrintDevice::QUbuntuPrintDevice(const QString &id)
 {
-    if (key.compare(key, QLatin1String(JSON_KEY), Qt::CaseInsensitive) == 0)
-        return new QUbuntuPrintSupport;
-    return 0;
+    Q_UNUSED(id)
+
+    // have to set ID otherwise printer has no name
+    // and QPrinter ends up thinking it is not a NativePrinter
+    // which then allows the user to change the output filename
+    m_id = id;
+    m_name = PRINTER_NAME;
+    m_location = __("Internal");
+    m_makeAndModel = PRINTER_NAME;
+
+    // Disable collate, copies and duplex as they don't make sense
+    m_supportsCollateCopies = false;
+    m_supportsMultipleCopies = false;
+    m_haveDuplexModes = false;
 }
 
-QT_END_NAMESPACE
-
-#include "main.moc"
+bool QUbuntuPrintDevice::isValid() const
+{
+    return true;
+}

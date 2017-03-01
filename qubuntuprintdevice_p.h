@@ -17,36 +17,23 @@
  *
  * Authored-by: Andrew Hayzen <andrew.hayzen@canonical.com>
  */
-#include <QtPrintSupport/qpa/qplatformprintplugin.h>
-#include <QtCore/QStringList>
+#ifndef QUBUNTUPRINTDEVICE_H
+#define QUBUNTUPRINTDEVICE_H
 
-#include "constants.h"
-#include "qubuntuprintsupport_p.h"
+#include <QtCore/QString>
+#include <QtPrintSupport/qpa/qplatformprintdevice.h>
 
 QT_BEGIN_NAMESPACE
 
-class QUbuntuPrintSupportPlugin : public QPlatformPrinterSupportPlugin
+class QUbuntuPrintDevice : public QPlatformPrintDevice
 {
-    Q_OBJECT
-    Q_PLUGIN_METADATA(IID QPlatformPrinterSupportFactoryInterface_iid FILE "qtubuntu-print.json")
-
 public:
-    QStringList keys() const;
-    QPlatformPrinterSupport *create(const QString &) Q_DECL_OVERRIDE;
+    QUbuntuPrintDevice();
+    explicit QUbuntuPrintDevice(const QString &id);
+
+    bool isValid() const Q_DECL_OVERRIDE;
 };
-
-QStringList QUbuntuPrintSupportPlugin::keys() const
-{
-    return QStringList(QStringLiteral(JSON_KEY));
-}
-
-QPlatformPrinterSupport *QUbuntuPrintSupportPlugin::create(const QString &key)
-{
-    if (key.compare(key, QLatin1String(JSON_KEY), Qt::CaseInsensitive) == 0)
-        return new QUbuntuPrintSupport;
-    return 0;
-}
 
 QT_END_NAMESPACE
 
-#include "main.moc"
+#endif // QUBUNTUPRINTDEVICE_H

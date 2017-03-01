@@ -17,36 +17,28 @@
  *
  * Authored-by: Andrew Hayzen <andrew.hayzen@canonical.com>
  */
-#include <QtPrintSupport/qpa/qplatformprintplugin.h>
-#include <QtCore/QStringList>
+#ifndef QUBUNTUPRINTSUPPORT_H
+#define QUBUNTUPRINTSUPPORT_H
 
-#include "constants.h"
-#include "qubuntuprintsupport_p.h"
+#include <QtPrintSupport/qpa/qplatformprintersupport.h>
+#include <QtCore/qstringlist.h>
 
 QT_BEGIN_NAMESPACE
 
-class QUbuntuPrintSupportPlugin : public QPlatformPrinterSupportPlugin
+class QUbuntuPrintSupport : public QPlatformPrinterSupport
 {
-    Q_OBJECT
-    Q_PLUGIN_METADATA(IID QPlatformPrinterSupportFactoryInterface_iid FILE "qtubuntu-print.json")
-
 public:
-    QStringList keys() const;
-    QPlatformPrinterSupport *create(const QString &) Q_DECL_OVERRIDE;
+    QUbuntuPrintSupport();
+    ~QUbuntuPrintSupport();
+
+    QPrintEngine *createNativePrintEngine(QPrinter::PrinterMode printerMode) Q_DECL_OVERRIDE;
+    QPaintEngine *createPaintEngine(QPrintEngine *printEngine, QPrinter::PrinterMode) Q_DECL_OVERRIDE;
+
+    QPrintDevice createPrintDevice(const QString &id) Q_DECL_OVERRIDE;
+    QStringList availablePrintDeviceIds() const Q_DECL_OVERRIDE;
+    QString defaultPrintDeviceId() const Q_DECL_OVERRIDE;
 };
-
-QStringList QUbuntuPrintSupportPlugin::keys() const
-{
-    return QStringList(QStringLiteral(JSON_KEY));
-}
-
-QPlatformPrinterSupport *QUbuntuPrintSupportPlugin::create(const QString &key)
-{
-    if (key.compare(key, QLatin1String(JSON_KEY), Qt::CaseInsensitive) == 0)
-        return new QUbuntuPrintSupport;
-    return 0;
-}
 
 QT_END_NAMESPACE
 
-#include "main.moc"
+#endif // QUBUNTUPRINTSUPPORT_H
