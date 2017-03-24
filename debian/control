@@ -19,8 +19,6 @@ Vcs-Bzr: https://code.launchpad.net/~phablet-team/qtubuntu-print/trunk
 Package: qtubuntu-print
 Architecture: any
 Depends: content-hub,
-         libqt5printsupport5,
-         libqt5widgets5,
          ${misc:Depends},
          ${shlibs:Depends}
 Recommends: ubuntu-printing-app
