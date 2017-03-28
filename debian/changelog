@@ -1,3 +1,10 @@
+qtubuntu-print (0.1+17.04.20170328-0ubuntu1) zesty; urgency=medium
+
+  * Remove some depends as they are pulled in via shlibs:Depends (LP:
+    #1673809)
+
+ -- Andrew Hayzen <ahayzen@gmail.com>  Tue, 28 Mar 2017 13:37:26 +0000
+
 qtubuntu-print (0.1+17.04.20170324-0ubuntu1) zesty; urgency=medium
 
   * Fix typo in copyright
