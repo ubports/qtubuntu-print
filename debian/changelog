@@ -1,3 +1,9 @@
+qtubuntu-print (0.2+ubports) xenial; urgency=medium
+
+  * Imported to UBports
+
+ -- UBports auto importer <infra@ubports.com>  Mon, 15 Jan 2018 14:36:50 +0100
+
 qtubuntu-print (0.1+17.04.20170328-0ubuntu1) zesty; urgency=medium
 
   * Remove some depends as they are pulled in via shlibs:Depends (LP:
