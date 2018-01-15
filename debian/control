@@ -11,7 +11,8 @@ Build-Depends: cmake (>= 2.8.9),
                pkg-config,
                qt5-qmake,
                qtbase5-dev,
-               qtbase5-private-dev
+               qtbase5-private-dev,
+               libcups2-dev
 Standards-Version: 3.9.7
 Homepage: http://launchpad.net/qtubuntu-print
 Vcs-Bzr: https://code.launchpad.net/~phablet-team/qtubuntu-print/trunk
