@@ -38,8 +38,9 @@ QUbuntuPrintSupport::~QUbuntuPrintSupport()
 
 }
 
-QPrintEngine *QUbuntuPrintSupport::createNativePrintEngine(QPrinter::PrinterMode printerMode)
+QPrintEngine *QUbuntuPrintSupport::createNativePrintEngine(QPrinter::PrinterMode printerMode, const QString &deviceId)
 {
+    Q_UNUSED(deviceId);
     return new QUbuntuPrintEngine(printerMode);
 }
 
